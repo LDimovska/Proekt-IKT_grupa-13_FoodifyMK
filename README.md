@@ -1,5 +1,4 @@
 # FoodifyMK 
-##### Grupa 13
 
 
 
@@ -22,6 +21,8 @@ Eve edna slika koja gi opisuva komandite na git.
 ![Git data commands](http://i.stack.imgur.com/MgaV9.png)
 
 Poveke informacii za ova najdete na [linkov](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
+
+##Grupa 13:
 
 [Liljana Dimovska @LDimovska](https://github.com/LDimovska)
 
