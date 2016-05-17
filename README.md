@@ -5,6 +5,9 @@
 ##Kako da simnete kopija od proektot
 Stisnete na kopceto *"Clone or download"* po sto ke se simne lokalna kopija kaj vas na kompjuter. Poveke informacii za ova najdete na [linkov](https://help.github.com/articles/fork-a-repo/). 
 
+##Simnuvanje git shell
+Mozete da simnete github za desktop [tuka](https://desktop.github.com/) i zaedno so toa ke vi se simne programce github (preku koe slikovite ke moze da gledate promeni vo proekti i slicno) i git shell (toa e konzolata vo koja se vnesuvaat komandite koi gi imam spomnato podole). 
+
 ##Prikacuvanje verzija
 Za da ne se napravi kasa, verzija ke prikacuvate samo koga ke imate nesto koe ke moze da se kompajlira i ke bide bez greski. 
 
