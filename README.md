@@ -23,14 +23,20 @@ Eve edna slika koja gi opisuva komandite na git.
 
 Poveke informacii za ova najdete na [linkov](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 
-[@veselinoskihristijan](https://github.com/veselinoskihristijan)
+[Liljana Dimovska @LDimovska](https://github.com/LDimovska)
 
-[@dimitrova-s](https://github.com/dimitrova-s)
+[Hristijan Veselinoski @veselinoskihristijan](https://github.com/veselinoskihristijan)
 
-[@mvelickovski](https://github.com/mvelickovski)
+[Stefani Dimitrova @dimitrova-s](https://github.com/dimitrova-s)
 
-[@brancheveljanoski](https://github.com/brancheveljanoski)
+[Marko Velickovski @mvelickovski](https://github.com/mvelickovski)
 
-[@ViranovVasil](https://github.com/ViranovVasil)
+[Branche Veljanoski @brancheveljanoski](https://github.com/brancheveljanoski)
+
+[Viranov Vasil @ViranovVasil](https://github.com/ViranovVasil)
+
+[Milan Despotovski @milanmk007](https://github.com/milanmk007)
+
+[Fiona Bolinovska @fbolinovska](https://github.com/fbolinovska)
 
 
