@@ -23,10 +23,14 @@ Eve edna slika koja gi opisuva komandite na git.
 
 Poveke informacii za ova najdete na [linkov](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 
-@veselinoskihristijan
-@dimitrova-s
-@mvelickovski
-@brancheveljanoski
-@ViranovVasil
+[@veselinoskihristijan](https://github.com/veselinoskihristijan)
+
+[@dimitrova-s](https://github.com/dimitrova-s)
+
+[@mvelickovski](https://github.com/mvelickovski)
+
+[@brancheveljanoski](https://github.com/brancheveljanoski)
+
+[@ViranovVasil](https://github.com/ViranovVasil)
 
 
