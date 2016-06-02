@@ -43,4 +43,6 @@ Poveke informacii za ova najdete na [linkov](https://help.github.com/articles/ad
 
 [Fiona Bolinovska @fbolinovska](https://github.com/fbolinovska)
 
+[Aleksandar Dimitrievski @ADimitrievski](https://github.com/ADimitrievski)
+
 
