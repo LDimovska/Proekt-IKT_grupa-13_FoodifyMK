@@ -1,0 +1,361 @@
+﻿
+CREATE TABLE  `KORISNIK` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`OPIS` VARCHAR(100), 
+	 CONSTRAINT `KORISNIK_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE  `LOKACIJA_TIP` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`OPIS` VARCHAR(100),
+	 CONSTRAINT `LOKACIJA_TIP_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+ 
+
+CREATE TABLE  `LOKACIJA` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`IME` VARCHAR(50),
+	`TIP_ID` DOUBLE, 
+	 CONSTRAINT `LOKACIJA_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+ALTER TABLE  `LOKACIJA` ADD CONSTRAINT `TIP_ID_FK_OD_LOKACIJA` FOREIGN KEY (`TIP_ID`) REFERENCES  `LOKACIJA_TIP` (`ID`);
+
+
+CREATE TABLE  `KLIENT` 
+   (
+	`EMAIL` VARCHAR(50) CHECK (EMAIL LIKE '%@%.%'),
+	`PASSWORD` VARCHAR(30) CHECK (PASSWORD LIKE '______%'),
+	`IME` VARCHAR(100) NOT NULL, 
+	`PREZIME` VARCHAR(100) NOT NULL, 
+	`KOMPANIJA` VARCHAR(50),
+	`ULICA` VARCHAR(100),
+	`ULICA_BROJ` VARCHAR(30),
+	`KAT` VARCHAR(30),
+	`STAN_BROJ` VARCHAR(20),
+	`TELEFONSKI_BROJ` VARCHAR(40), 
+	`KORISNIK_ID` DOUBLE NOT NULL,
+	`LOKACIJA_ID` DOUBLE NOT NULL,
+	`TIP_REGISTRACIJA` VARCHAR(10) DEFAULT 'DEFAULT',
+	 CHECK (TIP_REGISTRACIJA IN (`DEFAULT`, `FACEBOOK`, `GOOGLE`, `TWITTER`)),
+	 CONSTRAINT `KLIENT_PK` PRIMARY KEY (`EMAIL`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+
+ALTER TABLE  `KLIENT` ADD CONSTRAINT `KORISNIK_ID_FK_OD_KLIENT` FOREIGN KEY (`KORISNIK_ID`) REFERENCES  `KORISNIK` (`ID`);
+
+ALTER TABLE  `KLIENT` ADD CONSTRAINT `LOKACIJA_ID_FK_OD_KLIENT` FOREIGN KEY (`LOKACIJA_ID`) REFERENCES  `LOKACIJA` (`ID`);
+
+
+CREATE TABLE  `POENI` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`OPIS` VARCHAR(100) NOT NULL,
+	`POENI` DOUBLE NOT NULL,
+	CONSTRAINT `POENI_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE  `NARACKA` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`KLIENT_EMAIL` VARCHAR(50) CHECK (EMAIL LIKE '%@%.%'),	
+	`POENI_ID` DOUBLE,
+	`DATUM` DATETIME,  
+	 CONSTRAINT `NARACKA_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+
+ALTER TABLE  `NARACKA` ADD CONSTRAINT `KLIENT_EMAIL_FK_OD_NARACKA` FOREIGN KEY (`KLIENT_EMAIL`) REFERENCES  `KLIENT` (`EMAIL`);
+
+
+ALTER TABLE  `NARACKA` ADD CONSTRAINT `POENI_ID_FK_OD_NARACKA` FOREIGN KEY (`POENI_ID`) REFERENCES  `POENI` (`ID`);
+
+
+CREATE TABLE  `DOSTAVA` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`MINIMUM_CENA` DECIMAL(8,2) NOT NULL,  
+	`DOPOLNITELNI_MINUTI` DOUBLE NOT NULL,
+	`LOKACIJA_ID` DOUBLE NOT NULL,
+	 CONSTRAINT `DOSTAVA_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+ALTER TABLE  `DOSTAVA` ADD CONSTRAINT `LOKACIJA_ID_FK_OD_DOSTAVA` FOREIGN KEY (`LOKACIJA_ID`) REFERENCES  `LOKACIJA` (`ID`);
+
+
+CREATE TABLE  `KATEGORIJA` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`IME` VARCHAR(50) NOT NULL,
+	 CONSTRAINT `KATEGORIJA_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE  `PRODUKT_TIP` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`IME` VARCHAR(50) NOT NULL,
+	 CONSTRAINT `PRODUKT_TIP_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+CREATE TABLE  `PRODUKT` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`IME` VARCHAR(50) NOT NULL, 
+	`OPIS` VARCHAR(400),  
+	`CENA` DECIMAL(8,2) NOT NULL,
+	`PODGOTOVKA_MINUTI` DOUBLE,
+	`SLIKA_IME` VARCHAR(100), 
+	`KATEGORIJA_ID` DOUBLE,
+	`TIP_ID` DOUBLE, 
+	 CONSTRAINT `PRODUKT_PK` PRIMARY KEY (`ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+ALTER TABLE  `PRODUKT` ADD CONSTRAINT `KATEGORIJA_ID_FK_OD_PRODUKT` FOREIGN KEY (`KATEGORIJA_ID`) REFERENCES  `KATEGORIJA` (`ID`);
+
+ALTER TABLE  `PRODUKT` ADD CONSTRAINT `TIP_ID_FK_OD_PRODUKT` FOREIGN KEY (`TIP_ID`) REFERENCES  `PRODUKT_TIP` (`ID`);
+
+
+CREATE TABLE  `NARACKA_PRODUKTI` 
+   (	
+	`NARACKA_ID` DOUBLE NOT NULL, 
+	`PRODUKT_ID` DOUBLE NOT NULL, 
+	`KOLICINA` DECIMAL(8,2) DEFAULT 1, 
+	 CONSTRAINT `NARACKA_PRODUKTI_PK` PRIMARY KEY (`NARACKA_ID`, `PRODUKT_ID`) 
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+ALTER TABLE  `NARACKA_PRODUKTI` ADD CONSTRAINT `NARACKA_ID_FK_OD_NARACKA_PRODUKTI` FOREIGN KEY (`NARACKA_ID`) REFERENCES  `NARACKA` (`ID`);
+
+ALTER TABLE  `NARACKA_PRODUKTI` ADD CONSTRAINT `PRODUKT_ID_FK_OD_NARACKA_PRODUKTI` FOREIGN KEY (`PRODUKT_ID`) REFERENCES  `PRODUKT` (`ID`);
+
+CREATE TABLE  `STATUS` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT, 
+	`OPIS` VARCHAR(50) NOT NULL, 
+	 CONSTRAINT `STATUS_PK` PRIMARY KEY (`ID`)
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci; 
+
+
+CREATE TABLE  `NARACKA_STATUS` 
+   (	
+	`ID` DOUBLE AUTO_INCREMENT,
+	`NARACKA_ID` DOUBLE NOT NULL,
+	`STATUS_ID` DOUBLE DEFAULT 0,
+	 CONSTRAINT `STATUS_NARACKA_PK` PRIMARY KEY (`ID`)
+   ) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+ALTER TABLE  `NARACKA_STATUS` ADD CONSTRAINT `STATUS_ID_FK_OD_STATUS_NARACKA` FOREIGN KEY (`STATUS_ID`) REFERENCES  `STATUS` (`ID`);
+
+ALTER TABLE  `NARACKA_STATUS` ADD CONSTRAINT `NARACKA_ID_FK_OD_STATUS_NARACKA` FOREIGN KEY (`NARACKA_ID`) REFERENCES  `NARACKA` (`ID`);
+
+
+
+INSERT INTO KORISNIK
+    (OPIS)
+VALUES
+    ('Вработен во Foodify MK'),
+    ('Невработен, корисник на услуги во Foodify MK');
+
+
+
+INSERT INTO LOKACIJA_TIP
+    (OPIS)
+VALUES
+    ('Помалку од 2 km од локацијата на Foodify МК'),
+    ('Повеќе од 2 km од локацијата на Foodify МК');
+
+
+
+INSERT INTO LOKACIJA
+    (IME, TIP_ID)
+VALUES
+    ('Карпош 1', 1),
+    ('Карпош 2', 1),
+    ('Карпош 3', 1),
+    ('Карпош 4', 1),
+    ('Центар', 2),
+    ('Влае', 2),
+    ('Ѓорче Петров', 2),
+    ('Козле', 2),
+    ('Гази Баба', 2),
+    ('Кисела Вода', 2),
+    ('Автокоманда', 2),
+    ('Тафтачиџе', 2),
+    ('Аеродром', 2),
+    ('Чаир', 2);
+
+
+
+INSERT INTO KLIENT
+    (EMAIL, PASSWORD, IME, PREZIME, KORISNIK_ID, LOKACIJA_ID)
+VALUES
+    ('veselinoskihristijan@foodify.com', 'veselinoski', 'Христијан', 'Веселиноски', 2, 2),
+    ('viranovvasil@foodify.com', 'viranov', 'Васил', 'Виранов', 2, 2),
+    ('dimovskaliljana@foodify.com', 'dimovska', 'Лилјана', 'Димовска', 2, 2),
+    ('davinovskigoce@foodify.com', 'davinovski', 'Гоце', 'Давиновски', 1, 2),
+    ('despotovskimilan@foodify.com', 'despotovski', 'Милан', 'Деспотовски', 2, 2),
+    ('dimitrovastefani@foodify.com', 'dimitrova', 'Стефани', 'Димитрова', 2, 2),
+    ('veljanoskibrance@foodify.com', 'veljanoski', 'Бранче', 'Велјаноски', 2, 2),
+    ('velickovskimarko@foodify.com', 'velickovski', 'Марко', 'Величковски', 2, 2),
+    ('dimitrievskialeksandar@foodify.com', 'dimitrievski', 'Александар', 'Димитриевски', 1, 2),
+    ('bolinovskafiona@foodify.com', 'bolinovska', 'Фиона', 'Болиновска', 2, 2);
+
+
+INSERT INTO POENI
+    (OPIS, POENI)
+VALUES
+    ('Сметката е помеѓу 0 и 199 денари', 0),
+	('Сметката е помеѓу 200 и 399 денари', 5),
+	('Сметката е помеѓу 400 и 599 денари', 10),
+	('Сметката е помеѓу 600 и 799 денари', 15),
+	('Сметката е помеѓу 800 и 999 денари', 20),
+	('Сметката е над 1000 денари', 25);
+
+
+
+INSERT INTO NARACKA
+    (KLIENT_EMAIL, DATUM, POENI_ID)
+VALUES
+    ('veselinoskihristijan@foodify.com', NOW(), 2),
+    ('veljanoskibrance@foodify.com', NOW(), 4),
+    ('velickovskimarko@foodify.com', NOW(), 2),
+    ('bolinovskafiona@foodify.com', NOW(), 1),
+    ('veselinoskihristijan@foodify.com', NOW(), 2),
+    ('dimovskaliljana@foodify.com', NOW(), 2);
+
+
+
+INSERT INTO DOSTAVA
+    (MINIMUM_CENA, DOPOLNITELNI_MINUTI, LOKACIJA_ID)
+VALUES
+    (150, 0, 1),
+    (150, 0, 2),
+    (150, 0, 3),
+    (150, 0, 4),
+    (300, 10, 5),
+    (300, 10, 6),
+    (300, 10, 7),
+    (300, 10, 8),
+    (300, 10, 9),
+    (300, 10, 10),
+    (300, 10, 11),
+    (300, 10, 12),
+    (300, 10, 13),
+    (300, 10, 14);
+
+
+INSERT INTO KATEGORIJA
+    (IME)
+VALUES
+    ('Храна'),
+    ('Пијалок');
+
+
+
+
+
+
+
+
+INSERT INTO PRODUKT_TIP
+    (IME)
+VALUES
+    ('Салата'),
+    ('Супа'),
+    ('Апетисани'),
+    ('Десерт'),
+    ('Специјалитет за ручек'),
+    ('Освежителен пијалок'),
+    ('Пиво'),
+    ('Жесток пијалок'),
+    ('Дневна понуда');
+
+
+
+INSERT INTO PRODUKT
+    (IME, OPIS, CENA, PODGOTOVKA_MINUTI, SLIKA_IME, KATEGORIJA_ID, TIP_ID)
+VALUES
+    ('Мешана салата', 'Салата со марула, грашок, домати, јајца...', 70, 15, 'meshana_salata.jpg', 1, 1),
+    ('Шопска салата', 'Салата со домати, краставици и сирење', 90, 15, 'shopska_salata2.jpg', 1, 1),
+    ('Грчка салата', 'Салата со марула, домати, сирење, маслинки', 100, 15, 'grchka_salata.jpg', 1, 1),
+    ('Таратур', 'Салата со мајонез, грашок, домати, јајца...', 80, 15, 'taratur.jpg', 1, 1),
+    ('Салата со краставички', 'Салата со краставички', 50, 15, 'salata_krastavici.jpg', 1, 1),
+    ('Цезар салата', 'Салата со марула, грашок, домати, јајца, краставички, маслинки...', 160, 15, 'cezar_salata1.jpg', 1, 1),
+	('Телешко варено', 'Супа со телешко месо', 70, 20, 'teleshko_vareno.jpg', 1, 2),
+    ('Пилешка супа', 'Супа со пилешко месо', 80, 20, 'pileshka_supa.jpg', 1, 2),
+    ('Домашна супа', 'Супа со фиде', 60, 20, 'domashna_supa.jpg', 1, 2),
+	('Кикирики', 'Супа со фиде', 30, 5, 'kikiriki.jpg', 1, 3),
+	('Индиски ореви', 'Супа со фиде', 90, 5, 'indiski_orevi.jpg', 1, 3),
+	('Бадеми', 'Супа со фиде', 60, 5, 'bademi.jpg', 1, 3),
+	('Палачинка порција (со банана)', 'Палачинка со банана и чоколаден прелив', 120, 10, 'palacinki.jpg', 1, 4),
+	('Сладолед', 'Сладолед кугли', 60, 5, 'sladoled.jpg', 1, 4),
+	('Овошен колач', 'Колач со јагоди, малини, бело чоколадо', 80, 5, 'page3_img5.jpg', 1, 4),
+	('Овошје (мешано)', 'Јагоди, праски, малини, капини...', 70, 5, 'ovosje.jpg', 1, 4),
+	('Лазањи со месо', 'Лазањи, месо', 100, 25, 'page3_img1.jpg', 1, 5),
+	('Свинско печено', 'Свинско месо, компири', 150, 25, 'svinsko.jpg', 1, 5),
+	('Мешана скара на даска', 'Телешко месо, свинско месо, пилешко месо', 300, 30, 'mesana_skara.jpg', 1, 5),
+	('Кока кола', '', 60, 5, 'sokovi.jpg', 2, 6),
+	('Фанта', '', 60, 5, 'sokovi.jpg', 2, 6),
+	('Спрајт', '', 60, 5, 'sokovi.jpg', 2, 6),
+	('Пепси', '', 50, 5, 'sokovi.jpg', 2, 6),
+	('Цеден сок', '', 80, 5, 'sokovi.jpg', 2, 6),
+	('Скопско', '', 80, 5, 'pivo.jpg', 2, 7),
+	('Даб', '', 80, 5, 'pivo.jpg', 2, 7),
+	('Старопрамен', '', 100, 5, 'pivo.jpg', 2, 7),
+	('Амстел', '', 90, 5, 'pivo.jpg', 2, 7),
+	('Корона', '', 120, 5, 'pivo.jpg', 2, 7),
+	('Хајнекен', '', 100, 5, 'pivo.jpg', 2, 7),
+	('Ракија', '50г.', 50, 5, 'zestoko.jpg', 2, 8),
+	('Узо', '50г.', 50, 5, 'zestoko.jpg', 2, 8),
+	('Коњак', '50г.', 50, 5, 'zestoko.jpg', 2, 8),
+	('Јегер', '50г.', 60, 5, 'zestoko.jpg', 2, 8),
+	('Текила', '50г.', 50, 5, 'zestoko.jpg', 2, 8),
+	('Шпагети карбонара', 'Шпагети', 160, 30, 'blur_img1.jpg', 1, 9),
+	('Пиле бомбај', 'Пилешко месо', 220, 35, 'blur_img2.jpg', 1, 9),
+	('Даска АРАЖОК', '', 390, 40, 'blur_img3.jpg', 1, 9);
+
+
+
+INSERT INTO NARACKA_PRODUKTI
+    	(NARACKA_ID, PRODUKT_ID, KOLICINA)
+VALUES
+    	(1, 13, 2),
+	(2, 19, 1),
+	(2, 25, 4),
+	(3, 17, 1),
+	(3, 18, 1),
+	(3, 2, 1),
+	(4, 36, 1),
+	(5, 37, 1),
+	(6, 38, 1);
+
+
+
+INSERT INTO STATUS
+    (OPIS)
+VALUES
+	('Порачката не е примена'),
+	('Порачката е примена'),
+	('Подготовка'),
+	('Во печка'),
+	('Проверка на кавалитет'),
+	('На пат кон вас'),
+	('Доставена');
+
+
+
+INSERT INTO NARACKA_STATUS
+    (NARACKA_ID, STATUS_ID)
+VALUES
+	(1, 2),
+	(2, 5),
+	(3, 3),
+	(4, 6),
+	(5, 2),
+	(6, 7);
+
