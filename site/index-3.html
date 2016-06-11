@@ -72,13 +72,13 @@
 
 <!--==============================Content=================================-->
 
-<div class="content"><div class="ic"></div>
+<div class="content">
   <div class="container_12">
-    <div class="grid_8">  
+    <div class="grid_12">
       <h3 class="">Најава</h3>
 <!-- You only need this form and the form-login.css -->
 
-        <form class="form-login" method="post" action="#">
+        <form class="form-login" method="POST" action="php/login.php">
 
             <div class="form-log-in-with-email">
 
@@ -90,14 +90,14 @@
 
                     <div class="form-row">
                         <label>
-                            <span>Email</span>
+                            <span>Е-маил</span>
                             <input type="email" name="email">
                         </label>
                     </div>
 
                     <div class="form-row">
                         <label>
-                            <span>Password</span>
+                            <span>Лозинка</span>
                             <input type="password" name="password">
                         </label>
                     </div>
@@ -108,8 +108,8 @@
 
                 </div>
 
-                <a href="#" class="form-forgotten-password">Forgotten password &middot;</a>
-                <a href="#" class="form-create-an-account">Create an account &rarr;</a>
+                <a href="index-5.html" class="form-forgotten-password">Заборавена лозинка &middot;</a>
+                <a href="php/new_user.php" class="form-create-an-account">Креирај профил &rarr;</a>
 
             </div>
 
@@ -127,30 +127,27 @@
 
         </form>      
       
-    </div>  
-    <div class="grid_3 prefix_1">
-     
-    </div> 
+    </div>
   </div>
 </div>
 
 
 <!--==============================footer=================================-->
 
-<footer>    
-  <div class="container_12">
-    <div class="grid_6 prefix_3">
-      <a href="index.html" class="f_logo"><img src="images/f_logo.png" alt=""></a>
-      <div class="copy">
-          Website дизајниран од Тим 13
-          <br>
-          Управување на ИКТ
-          <br>
-          &copy; 2016
+<footer>
+    <div class="container_12">
+        <div class="grid_6 prefix_3">
+            <a href="index.html" class="f_logo"><img src="images/f_logo.png" alt=""></a>
+            <div class="copy">
+                Website дизајниран од Тим 13
+                <br>
+                Управување на ИКТ
+                <br>
+                &copy; 2016
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
        <script>
       $(document).ready(function(){ 
@@ -161,8 +158,9 @@
           function(){
             $('.bt-menu').removeClass('bt-menu-open'); 
           } 
-        ); 
-      }) 
+        );
+      })
+
     </script>
 </body>
 
