@@ -91,7 +91,7 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
         <ul>
             <li class="bt-icon current"><a href="index-4%20-%20Copy.php">Купувај</a></li>
             <li class="bt-icon"><a href="../order-status.html">Нарачка</a></li>
-            <li class="bt-icon"><a href="../index-6_logedin.html">Профил</a></li>
+            <li class="bt-icon"><a href="profile.php">Профил</a></li>
             <li class="bt-icon"><a href="logout.php">Одјави се</a></li>
         </ul>
       </nav>
@@ -213,10 +213,14 @@ EOT;
 <footer>
   <div class="container_12">
     <div class="grid_6 prefix_3">
-      <a href="../index.html" class="f_logo"><img src="../images/f_logo.png" alt=""></a>
-      <div class="copy">
-      &copy; 2013 | <a href="#">Privacy Policy</a> <br> Website   designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster.com</a>
-      </div>
+        <a href="../index.html" class="f_logo"><img src="../images/f_logo.png" alt="Foodify MK"></a>
+        <div class="copy">
+            Website дизајниран од Тим 13
+            <br>
+            Управување на ИКТ
+            <br>
+            &copy; 2016
+    </div>
     </div>
   </div>
 </footer>

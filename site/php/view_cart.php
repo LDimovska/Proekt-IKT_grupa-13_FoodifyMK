@@ -6,7 +6,7 @@ include_once("config.php");
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>View shopping cart</title>
+	<title>Кошничка</title>
 	<link href="../css/style_cart.css" rel="stylesheet" type="text/css">
 	<meta charset="utf-8">
 	<link rel="icon" href="../images/favicon.ico">
@@ -80,25 +80,34 @@ include_once("config.php");
 								echo '<td>'.$subtotal.$currency.'</td>';
 								echo '<td><input type="checkbox" name="remove_code[]" value="'.$product_code.'" />Избриши</td>';
 								echo '</tr>';
+
 								$total = ($total + $subtotal); //add subtotal to total var
 							}
-
+							echo '<td colspan="5" align="right">Внеси купон: <input type="text" maxlength="6" size="6" name="discount"></td>';
+							$discount=0;
+//							$word=$_GET['discount'];
+//							if($word=='popust'){
+//								$discount=20;
+//							}
 							$grand_total = $total; //grand total including shipping cost
 							foreach($taxes as $key => $value){ //list and calculate all taxes in array
 								$tax_amount     = round($total * ($value / 100));
 								$tax_item[$key] = $tax_amount;
 								$grand_total    = $grand_total + $tax_amount;  //add tax val to grand total
 							}
+							$grand_total-=$discount;
 
 							$list_tax       = '';
 							foreach($tax_item as $key => $value){ //List all taxes
 								$list_tax .= $key. ': '. sprintf("%01.2f", $value).$currency.'<br />';
+
 							}
 //							$shipping_cost = ($shipping_cost)?'Shipping Cost : '.sprintf("%01.2f", $shipping_cost).$currency.'<br />':'';
 						}
+
 						?>
 						<tr><td colspan="5"><span style="float:right;text-align: right;"><?php echo $list_tax; ?>Вкупно: <?php echo sprintf("%01.2f", $grand_total)." ден.";?></span></td></tr>
-						<tr><td colspan="5"><a href="index-4%20-%20Copy.php" class="button">Купувај уште</a><button type="submit">Ажурирај</button></td></tr>
+						<tr><td colspan="5"><a href="index-4%20-%20Copy.php" class="button">Купувај уште</a><button type="submit" class="button">Ажурирај</button></td></tr>
 						</tbody>
 					</table>
 					<input type="hidden" name="return_url" value="<?php
@@ -113,10 +122,13 @@ include_once("config.php");
 <footer>
 	<div class="container_12">
 		<div class="grid_6 prefix_3">
-			<a href="../index.html" class="f_logo"><img src="../images/f_logo.png" alt="Foodify MK"></a>
+			<a href="index.html" class="f_logo"><img src="../images/f_logo.png" alt="Foodify MK"><span></span></a>
 			<div class="copy">
-				&copy; 2013 | <a href="#">Privacy Policy</a> <br> Website   designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster.com</a>
-			</div>
+				Website дизајниран од Тим 13
+				<br>
+				Управување на ИКТ
+				<br>
+				&copy; 2016
 		</div>
 	</div>
 </footer>

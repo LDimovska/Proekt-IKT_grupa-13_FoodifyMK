@@ -31,7 +31,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
 //    echo "Success";
 //    header("location:../index-2_logedin.html");
         echo "Успешно се најавивте!";
-        header("location:../index-6_logedin.html");
+        header("location:profile.php");
         exit();
     }else{
         header("location:../wrongLogin.html");
@@ -40,7 +40,9 @@ if(isset($_POST['email']) && isset($_POST['password'])){
     }
 } else{
 
-    echo "Vnesete user";
+    header("location:../wrongLogin.html");
+
+    exit();
 }
 
 ?>

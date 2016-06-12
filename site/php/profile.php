@@ -3,20 +3,20 @@
 <head>
     <title>Добредојдовте</title>
     <meta charset="utf-8">
-    <link rel="icon" href="images/favicon.ico">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
 
     <!-- Fonts -->
     <link href="fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-migrate-1.1.1.js"></script>
-    <script src="js/jquery.equalheights.js"></script>
-    <script src="js/jquery.ui.totop.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery-migrate-1.1.1.js"></script>
+    <script src="../js/jquery.equalheights.js"></script>
+    <script src="../js/jquery.ui.totop.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
     <script>
         $(document).ready(function(){
 
@@ -31,11 +31,11 @@
 
     <![endif]-->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
+    <script src="../js/html5shiv.js"></script>
     <link rel="stylesheet" media="screen" href="css/ie.css">
     <![endif]-->
     <!--[if lt IE 10]>
-    <script src="js/html5shiv.js"></script>
+    <script src="../js/html5shiv.js"></script>
     <link rel="stylesheet" media="screen" href="css/ie1.css">
     <![endif]-->
 
@@ -75,17 +75,17 @@
                 <a href="#"> </a>
                 <a href="#" class="last"></a>
             </div>
-            <h1><a href="index.html"><img src="images/logo.png" alt="Foodify MK"></a> </h1>
+            <h1><a href="../index.html"><img src="../images/logo.png" alt="Foodify MK"></a> </h1>
             <div class="menu_block">
 
 
                 <nav id="bt-menu" class="bt-menu">
                     <a href="#" class="bt-menu-trigger"><span>Мени</span></a>
                     <ul>
-                        <li class="bt-icon"><a href="php/index-4%20-%20Copy.php">Купувај</a></li>
-                        <li class="bt-icon"><a href="order-status.html">Нарачка</a></li>
-                        <li class="bt-icon current"><a href="index-6_logedin.html">Профил</a></li>
-                        <li class="bt-icon"><a href="php/logout.php">Одјави се</a></li>
+                        <li class="bt-icon"><a href="index-4%20-%20Copy.php">Купувај</a></li>
+                        <li class="bt-icon"><a href="../order-status.html">Нарачка</a></li>
+                        <li class="bt-icon current"><a href="profile.php">Профил</a></li>
+                        <li class="bt-icon"><a href="logout.php">Одјави се</a></li>
                     </ul>
                 </nav>
 
@@ -122,7 +122,7 @@
                                         </p>
                                     </div><!--/col-->
                                     <div class="col-xs-12 col-sm-4 text-center">
-                                        <img src="images/ghost_person_100x100_v1.png" alt="" class="center-block img-circle img-responsive">
+                                        <img src="../images/ghost_person_100x100_v1.png" alt="" class="center-block img-circle img-responsive">
                                         <ul class="list-inline ratings text-center" title="Ratings">
                                             <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
                                             <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
@@ -138,8 +138,8 @@
 
                                     </div><!--/col-->
                                     <div class="col-xs-12 col-sm-4">
-                                        <h2><strong>245</strong></h2>
-                                        <p><small>Following</small></p>
+                                        <h2><strong>24</strong></h2>
+                                        <p><small>Нарачки</small></p>
 
                                     </div><!--/col-->
                                     <div class="col-xs-12 col-sm-4">
@@ -193,7 +193,7 @@
 <footer>
     <div class="container_12">
         <div class="grid_6 prefix_3">
-            <a href="index.html" class="f_logo"><img src="images/f_logo.png" alt="Foodify MK"></a>
+            <a href="../index.html" class="f_logo"><img src="../images/f_logo.png" alt="Foodify MK"></a>
             <div class="copy">
                 Website дизајниран од Тим 13
                 <br>
@@ -208,12 +208,12 @@
 <script>
     $(document).ready(function(){
         $(".bt-menu-trigger").toggle(
-                function(){
-                    $('.bt-menu').addClass('bt-menu-open');
-                },
-                function(){
-                    $('.bt-menu').removeClass('bt-menu-open');
-                }
+            function(){
+                $('.bt-menu').addClass('bt-menu-open');
+            },
+            function(){
+                $('.bt-menu').removeClass('bt-menu-open');
+            }
         );
     })
 </script>
