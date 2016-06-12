@@ -17,11 +17,16 @@
     <script src="../js/jquery.equalheights.js"></script>
     <script src="../js/jquery.ui.totop.js"></script>
     <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/personLoged.js"></script>
     <script>
         $(document).ready(function(){
 
             $().UItoTop({ easingType: 'easeOutQuart' });
         })
+
+        function edit() {
+            alert("Доколку сакате да смените некои информации, пишете му на администраторот.");
+        }
     </script>
     <!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
@@ -111,14 +116,12 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-8">
-                                        <h2>Mike Anamendolla</h2>
-                                        <p><strong>About: </strong> Web Designer / UI. </p>
-                                        <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new things. </p>
-                                        <p><strong>Skills: </strong>
-                                            <span class="label label-info tags">html5</span>
-                                            <span class="label label-info tags">css3</span>
-                                            <span class="label label-info tags">jquery</span>
-                                            <span class="label label-info tags">bootstrap3</span>
+
+
+                                        <p><strong>Тип корисник: </strong> Вработен во Foodify.</p>
+                                        <p><strong>Нарачки: </strong>
+                                            <span class="label label-info tags">Десерти</span>
+                                            <span class="label label-info tags">Апетисани</span>
                                         </p>
                                     </div><!--/col-->
                                     <div class="col-xs-12 col-sm-4 text-center">
@@ -128,25 +131,33 @@
                                             <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
                                             <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
                                             <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                            <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star-half-empty fa-lg"></span></a></li>
                                         </ul>
                                     </div><!--/col-->
 
-                                    <div class="col-xs-12 col-sm-4">
-                                        <h2><strong> 20,7K </strong></h2>
-                                        <p><small>Followers</small></p>
+                                    <div class="col-xs-6 col-sm-4">
+                                        <h2><strong> 10K </strong></h2>
+                                        <p><small>Поени</small></p>
 
                                     </div><!--/col-->
-                                    <div class="col-xs-12 col-sm-4">
-                                        <h2><strong>24</strong></h2>
+                                    <div class="col-xs-6 col-sm-4">
+                                        <h2><strong>28</strong></h2>
                                         <p><small>Нарачки</small></p>
 
                                     </div><!--/col-->
-                                    <div class="col-xs-12 col-sm-4">
-                                        <h2><strong>43</strong></h2>
-                                        <p><small>Snippets</small></p>
+
+                                    <div class="col-xs-6 col-sm-4">
+                                    <h2><strong><span class="fa fa-beer fa-lg"></span> <span class="fa fa-shopping-cart fa-lg"></span>
+                                            <span class="fa fa-coffee fa-lg"></span> <span class="fa fa-heart fa-lg"></span>
+                                            <span class="fa fa-apple fa-lg"></span>
+                                            <span class="fa fa-credit-card fa-lg"></span>
+                                            <span class="fa fa-foursquare fa-lg"></span>
+                                            <span class="fa fa-smile-o fa-lg"></span>
+                                        </strong></h2>
+                                    <p><small>Награди</small></p>
 
                                     </div><!--/col-->
+                                    <div class="col-lg-12"><button id="edit" onclick="edit()"class="fa fa-pencil fa-lg"></button></div>
                                 </div><!--/row-->
                             </div><!--/panel-body-->
                         </div><!--/panel-->
@@ -173,13 +184,13 @@
             </div>
             <h3 class="head3">Новости</h3>
             <div class="news">
-                <time datetime="2016-01-01">Април<span>04</span></time>
+                <time datetime="2016-01-01">Април<span>08</span></time>
                 <div class="extra_wrapper" align="justify">
                     <p class="col1" ><a href="#">Нови производи</a></p>Од овој месец, запознајте се со најновите производи на здрава исхрана...
                 </div>
             </div>
             <div class="news">
-                <time datetime="2016-01-01">Мај<span>08</span></time>
+                <time datetime="2016-01-01">Мај<span>10</span></time>
                 <div class="extra_wrapper" align="justify">
                     <p class="col1" ><a href="#">Кафе на точак</a></p>Само во <span class="col1">Foodify</span>. Од 23 јуни земете кафе на точак. Дојдете и видете за што станува збор.
                 </div>
