@@ -41,7 +41,7 @@ include_once("config.php");
 				<a href="#"> </a>
 				<a href="#" class="last"></a>
 			</div>
-			<h1><a href="../index.html"><img src="../images/logo.png" alt="Boo House"></a> </h1>
+			<h1><a href="../index.html"><img src="../images/logo.png" alt="Foodify MK"></a> </h1>
 
 			<div class="clear"></div>
 		</div>
@@ -113,7 +113,7 @@ include_once("config.php");
 <footer>
 	<div class="container_12">
 		<div class="grid_6 prefix_3">
-			<a href="../index.html" class="f_logo"><img src="../images/f_logo.png" alt=""></a>
+			<a href="../index.html" class="f_logo"><img src="../images/f_logo.png" alt="Foodify MK"></a>
 			<div class="copy">
 				&copy; 2013 | <a href="#">Privacy Policy</a> <br> Website   designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster.com</a>
 			</div>
